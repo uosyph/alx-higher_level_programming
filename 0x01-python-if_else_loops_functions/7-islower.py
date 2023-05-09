@@ -1,3 +1,3 @@
 #!/usr/bin/python3
 def islower(c):
-    return c == c.lower()
+    return c.isalpha() and c == c.lower()
