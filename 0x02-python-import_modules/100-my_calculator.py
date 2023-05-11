@@ -8,19 +8,18 @@ if __name__ == "__main__":
     a = int(argv[1])
     operator = argv[2]
     b = int(argv[3])
-    match operator:
-        case "+":
-            print("{} {} {} = {}".format(a, operator, b, add(a, b)))
-            exit()
-        case "-":
-            print("{} {} {} = {}".format(a, operator, b, sub(a, b)))
-            exit()
-        case "*":
-            print("{} {} {} = {}".format(a, operator, b, mul(a, b)))
-            exit()
-        case "/":
-            print("{} {} {} = {}".format(a, operator, b, div(a, b)))
-            exit()
-        case _:
-            print("Unknown operator. Available operators: +, -, * and /")
-            exit(1)
+    if operator == "+":
+        print("{} {} {} = {}".format(a, operator, b, add(a, b)))
+        exit()
+    elif operator == "-":
+        print("{} {} {} = {}".format(a, operator, b, sub(a, b)))
+        exit()
+    elif operator == "*":
+        print("{} {} {} = {}".format(a, operator, b, mul(a, b)))
+        exit()
+    elif operator == "/":
+        print("{} {} {} = {}".format(a, operator, b, div(a, b)))
+        exit()
+    else:
+        print("Unknown operator. Available operators: +, -, * and /")
+        exit(1)
