@@ -8,7 +8,8 @@ def roman_to_int(roman_string):
     item = 0
     result = 0
     for item in range(item, len(roman_number)):
-        if item < len(roman_number) - 1 and roman_numerals[roman_number[item]] < roman_numerals[roman_number[item + 1]]:
+        if item < len(roman_number) - 1 and \
+                roman_numerals[roman_number[item]] < roman_numerals[roman_number[item + 1]]:
             result -= roman_numerals[roman_number[item]]
         else:
             result += roman_numerals[roman_number[item]]
