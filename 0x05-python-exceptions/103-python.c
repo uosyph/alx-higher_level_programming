@@ -8,35 +8,34 @@
  */
 void print_python_list(PyObject *p)
 {
-    int size;
-    int alloc;
-    int i;
-    const char *type_name;
-    PyObject *item;
+    Py_ssize_t size, alloc, i;
+    const char *type;
+    PyListObject *list = (PyListObject *)p;
+    PyVarObject *var = (PyVarObject *)p;
 
-    size = (((PyVarObject *)(p))->ob_size);
-    alloc = ((PyListObject *)(p))->allocated;
-    printf("[*] Python list info\n");
-    if (!PyList_Check(p))
-        printf("  [ERROR] Invalid List Object\n");
-    else
-    {
-        printf("[*] Size of the Python List = %d\n", size);
-        printf("[*] Allocated = %d\n", alloc);
+    size = var->ob_size;
+    alloc = list->allocated;
 
-        for (i = 0; i < size; i++)
-        {
-            item = ((PyListObject *)p)->ob_item[i];
-            type_name = (item->ob_type)->tp_name;
-            printf("Element %d: ", i);
-            printf("%s\n", type_name);
-            if (PyBytes_Check(item))
-                print_python_bytes(item);
-            if (PyFloat_Check(item))
-                print_python_float(item);
-        }
-    }
     fflush(stdout);
+
+    printf("[*] Python list info\n");
+    if (strcmp(p->ob_type->tp_name, "list") != 0)
+    {
+        printf("  [ERROR] Invalid List Object\n");
+        return;
+    }
+
+    printf("[*] Size of the Python List = %ld\n", size);
+    printf("[*] Allocated = %ld\n", alloc);
+
+    for (i = 0; i < size; i++)
+    {
+        type = list->ob_item[i]->ob_type->tp_name;
+        printf("Element %ld: %s\n", i, type);
+
+        if (strcmp(type, "bytes") == 0 || strcmp(type, "float") == 0)
+            print_python_bytes(list->ob_item[i]);
+    }
 }
 
 /**
@@ -46,34 +45,35 @@ void print_python_list(PyObject *p)
  */
 void print_python_bytes(PyObject *p)
 {
-    long int size;
-    int i;
-    char *str;
+    Py_ssize_t size, i;
+    PyBytesObject *bytes = (PyBytesObject *)p;
+
+    fflush(stdout);
 
     printf("[.] bytes object info\n");
-    if (!PyBytes_Check(p))
-        printf("  [ERROR] Invalid Bytes Object\n");
-    else
+    if (strcmp(p->ob_type->tp_name, "bytes") != 0)
     {
-        size = ((PyVarObject *)(p))->ob_size;
-        str = ((PyBytesObject *)(p))->ob_sval;
-
-        printf("  size: %ld\n", size);
-        printf("  trying string: %s\n", str);
-        size++;
-        if (size >= 10)
-            size = 10;
-        printf("  first %ld bytes:", size);
-        for (i = 0; i < size; i++)
-        {
-            if (str[i] < 0)
-                printf(" %02x", 256 + str[i]);
-            else
-                printf(" %02x", str[i]);
-        }
-        printf("\n");
+        printf("  [ERROR] Invalid Bytes Object\n");
+        return;
     }
-    fflush(stdout);
+
+    printf("  size: %ld\n", ((PyVarObject *)p)->ob_size);
+    printf("  trying string: %s\n", bytes->ob_sval);
+
+    if (((PyVarObject *)p)->ob_size >= 10)
+        size = 10;
+    else
+        size = ((PyVarObject *)p)->ob_size + 1;
+
+    printf("  first %ld bytes: ", size);
+    for (i = 0; i < size; i++)
+    {
+        printf("%02hhx", bytes->ob_sval[i]);
+        if (i == (size - 1))
+            printf("\n");
+        else
+            printf(" ");
+    }
 }
 
 /**
@@ -83,18 +83,21 @@ void print_python_bytes(PyObject *p)
  */
 void print_python_float(PyObject *p)
 {
-    double num;
-    char *num_str;
+    char *buffer = NULL;
 
-    num = ((PyFloatObject *)(p))->ob_fval;
+    PyFloatObject *float_obj = (PyFloatObject *)p;
+
+    fflush(stdout);
 
     printf("[.] float object info\n");
-    if (!PyFloat_Check(p))
-        printf("  [ERROR] Invalid Float Object\n");
-    else
+    if (strcmp(p->ob_type->tp_name, "float") != 0)
     {
-        num_str = PyOS_double_to_string(num, 'r', 0, Py_DTSF_ADD_DOT_0, Py_DTST_FINITE);
-        printf("  value: %s\n", num_str);
+        printf("  [ERROR] Invalid Float Object\n");
+        return;
     }
-    fflush(stdout);
+
+    buffer = PyOS_double_to_string(float_obj->ob_fval, 'r', 0,
+                                   Py_DTSF_ADD_DOT_0, NULL);
+    printf("  value: %s\n", buffer);
+    PyMem_Free(buffer);
 }
