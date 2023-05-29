@@ -7,12 +7,19 @@ void print_python_float(PyObject *p);
 void print_python_bytes(PyObject *p);
 void print_python_list(PyObject *p);
 
+/**
+ * print_python_list - loops over string and prints every character.
+ * @str: the string.
+ * @n: counter.
+ * Return: void.
+ */
 void print_hexn(const char *str, int n)
 {
     int i = 0;
-
     for (; i < n - 1; ++i)
+    {
         printf("%02x ", (unsigned char)str[i]);
+    }
 
     printf("%02x", str[i]);
     fflush(stdout);
