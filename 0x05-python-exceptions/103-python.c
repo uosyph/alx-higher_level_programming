@@ -44,6 +44,7 @@ void print_python_list(PyObject *p)
     }
 
     list_length = PyList_GET_SIZE(p);
+
     printf("[*] Size of the Python List = %d\n", list_length);
     printf("[*] Allocated = %d\n", (int)clone->allocated);
 
@@ -86,7 +87,9 @@ void print_python_bytes(PyObject *p)
     calc_bytes = clone_size + 1;
 
     if (calc_bytes >= 10)
+    {
         calc_bytes = 10;
+    }
 
     printf("  size: %d\n", clone_size);
     printf("  trying string: %s\n", clone->ob_sval);
