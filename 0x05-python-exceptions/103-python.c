@@ -2,9 +2,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void print_python_list(PyObject *p);
-void print_python_bytes(PyObject *p);
+void print_hexn(const char *str, int n);
 void print_python_float(PyObject *p);
+void print_python_bytes(PyObject *p);
+void print_python_list(PyObject *p);
+
+void print_hexn(const char *str, int n)
+{
+    int i = 0;
+
+    for (; i < n - 1; ++i)
+        printf("%02x ", (unsigned char)str[i]);
+
+    printf("%02x", str[i]);
+    fflush(stdout);
+}
 
 /**
  * print_python_list - prints information about Python lists.
@@ -50,7 +62,7 @@ void print_python_list(PyObject *p)
 void print_python_bytes(PyObject *p)
 {
     PyBytesObject *clone = (PyBytesObject *)p;
-    int calc_bytes, i, clone_size = 0;
+    int calc_bytes, clone_size = 0;
 
     printf("[.] bytes object info\n");
     if (!PyBytes_Check(p))
@@ -68,13 +80,7 @@ void print_python_bytes(PyObject *p)
     printf("  size: %d\n", clone_size);
     printf("  trying string: %s\n", clone->ob_sval);
     printf("  first %d bytes: ", calc_bytes);
-
-    for (; i < calc_bytes - 1; ++i)
-        printf("%02x ", (unsigned char)clone->ob_sval[i]);
-
-    printf("%02x", clone->ob_sval[i]);
-    fflush(stdout);
-
+    print_hexn(clone->ob_sval, calc_bytes);
     printf("\n");
 
     fflush(stdout);
