@@ -13,17 +13,17 @@ void print_python_list(PyObject *p);
  * @n: counter.
  * Return: void.
  */
-void print_hexn(const char *str, int n)
-{
-    int i = 0;
-    for (; i < n - 1; ++i)
-    {
-        printf("%02x ", (unsigned char)str[i]);
-    }
+// void print_hexn(const char *str, int n)
+// {
+//     int i = 0;
+//     for (; i < n - 1; ++i)
+//     {
+//         printf("%02x ", (unsigned char)str[i]);
+//     }
 
-    printf("%02x", str[i]);
-    fflush(stdout);
-}
+//     printf("%02x", str[i]);
+//     fflush(stdout);
+// }
 
 /**
  * print_python_list - prints information about Python lists.
@@ -32,7 +32,7 @@ void print_hexn(const char *str, int n)
  */
 void print_python_list(PyObject *p)
 {
-    int i = 0, list_len = 0;
+    int list_len = 0, i = 0;
     PyObject *item;
     PyListObject *clone = (PyListObject *)p;
 
@@ -69,7 +69,7 @@ void print_python_list(PyObject *p)
 void print_python_bytes(PyObject *p)
 {
     PyBytesObject *clone = (PyBytesObject *)p;
-    int calc_bytes, clone_size = 0;
+    int calc_bytes, clone_size = 0, i = 0;
 
     printf("[.] bytes object info\n");
     if (!PyBytes_Check(p))
@@ -87,7 +87,17 @@ void print_python_bytes(PyObject *p)
     printf("  size: %d\n", clone_size);
     printf("  trying string: %s\n", clone->ob_sval);
     printf("  first %d bytes: ", calc_bytes);
-    print_hexn(clone->ob_sval, calc_bytes);
+
+    const char *str = clone->ob_sval
+
+    for (; i < calc_bytes - 1; ++i)
+    {
+        printf("%02x ", (unsigned char)str[i]);
+    }
+
+    printf("%02x", str[i]);
+    // fflush(stdout);
+
     printf("\n");
 
     fflush(stdout);
@@ -101,7 +111,7 @@ void print_python_bytes(PyObject *p)
 void print_python_float(PyObject *p)
 {
     PyFloatObject *clone = (PyFloatObject *)p;
-    float n = 0;
+    float number = 0;
 
     printf("[.] float object info\n");
     if (!PyFloat_Check(p))
@@ -110,9 +120,9 @@ void print_python_float(PyObject *p)
         return;
     }
 
-    n = clone->ob_fval;
+    number = clone->ob_fval;
 
-    if ((int)n == n)
+    if ((int)number == number)
         printf("  value: %0.1f\n", clone->ob_fval);
     else
         printf("  value: %0.16g\n", clone->ob_fval);
