@@ -3,14 +3,16 @@
 
 
 class Square:
-    """A class that defines a square
-    Args: size (int): value of the size"""
+    """A class that defines a square by size"""
 
     def __init__(self, size=0):
-        """Checks type and value and raise error accordingly"""
-        if type(size) is not int:
-            raise TypeError('size must be an integer')
-        if size < 0:
-            raise ValueError('size must be >= 0')
-        """Initializes Square with size"""
-        self.__size = size
+        """Initializes the size
+        Args:
+            size (int): value of the size
+        """
+        if isinstance(size, int):
+            self.__size = size
+            if size < 0:
+                raise ValueError("size must be >= 0")
+        else:
+            raise TypeError("size must be an integer")
