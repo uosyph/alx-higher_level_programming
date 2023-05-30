@@ -1,6 +1,12 @@
 #!/usr/bin/python3
+"""Defines a square by size and position"""
+
+
 class Square:
+    """A class that defines a square"""
+
     def __init__(self, size=0, position=(0, 0)):
+        """Initializes the square with position and size"""
         self.size = size
         try:
             self.position = position
@@ -9,10 +15,12 @@ class Square:
 
     @property
     def position(self):
+        """Defines the position of the square and return the value"""
         return self.__position
 
     @position.setter
     def position(self, value):
+        """Check type, length, and value and raise error accordingly"""
         if type(value) is not tuple:
             self.__position = None
             raise TypeError("position must be a tuple of 2 positive integers")
@@ -30,10 +38,12 @@ class Square:
 
     @property
     def size(self):
+        """Defines the size of square and returns its value"""
         return self.__size
 
     @size.setter
     def size(self, value):
+        """Check type and value and raise error accordingly"""
         self.__size = value
         if type(value) is not int:
             raise TypeError('size must be an integer')
@@ -41,9 +51,11 @@ class Square:
             raise ValueError('size must be >= 0')
 
     def area(self):
+        """Defines the area of a square and return the value"""
         return self.__size ** 2
 
     def my_print(self):
+        """Prints in stdout the square with character #"""
         if self.position:
             if self.size > 0:
                 print('\n' * self.position[1], end="")
