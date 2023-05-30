@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Python script that creates an empty class"""
+"""Creates an empty class"""
 
 
 class Square:
