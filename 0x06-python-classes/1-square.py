@@ -7,4 +7,4 @@ class Square:
 
     def __init__(self, size):
         """Private instance attribute of size"""
-        self.size = size
+        self.__size = size
