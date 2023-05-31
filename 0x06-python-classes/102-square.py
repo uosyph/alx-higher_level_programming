@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines Area that returns the current square area,
-and can answer to comparators: ==, !=, >, >=, < and <= based on the square area"""
+and can answer to comparators: ==, !=, >, >=, < and <=
+based on the square area"""
 
 
 class Square:
@@ -27,7 +28,8 @@ class Square:
         """Defines the area of a square and return the value"""
         return self.__size ** 2
 
-    """Answer to comparators: ==, !=, >, >=, < and <= based on the square area"""
+    """Answer to comparators: ==, !=, >, >=, < and <=
+    based on the square area"""
 
     def __eq__(self, other):
         return self.area() == other.area()
