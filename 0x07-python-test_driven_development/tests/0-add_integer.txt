@@ -58,4 +58,3 @@ Should not return sum of list with int:
        >>> add_integer([1, 2, 3], 1)
        Traceback (most recent call last):
        TypeError: a must be an integer
-

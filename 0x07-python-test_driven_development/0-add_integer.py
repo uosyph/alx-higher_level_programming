@@ -1,17 +1,23 @@
 #!/usr/bin/python3
 """
-Adds two integers
+Adds two integers.
 
 Functions:
     0-add_integer(a,b=98)
+
 Raises:
-    TypeError: An error occurred accessing the variable type
+    TypeError: An error occurred accessing the variable type.
 """
 
 
 def add_integer(a, b=98):
-    """
-    Python function to sum two integers, check if a/b is int & float
+    """Sums two integers, and checks if a/b is int or float type.
+
+    Raises:
+        TypeError: An error occurred accessing the variable type.
+
+    Returns:
+        a + b: The sum of the two integers
     """
 
     if type(a) is int or type(a) is float:
