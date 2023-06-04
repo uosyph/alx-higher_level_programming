@@ -21,7 +21,7 @@ def print_square(size):
         TypeError: An error occurred accessing the variable type.
         ValueError: An error occurred accessing the variable value.
     """
-    
+
     if not isinstance(size, int):
         raise TypeError("size must be an integer")
 
