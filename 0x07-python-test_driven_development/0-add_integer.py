@@ -13,6 +13,10 @@ Raises:
 def add_integer(a, b=98):
     """Sums two integers, and checks if a/b is int or float type.
 
+    Args:
+        a (int): First number.
+        b (int, optional): Second number, Defaults to 98.
+
     Raises:
         TypeError: An error occurred accessing the variable type.
 

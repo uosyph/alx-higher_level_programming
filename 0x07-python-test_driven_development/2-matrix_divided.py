@@ -12,14 +12,18 @@ Raises:
 
 
 def matrix_divided(matrix, div):
-    """Divides a matrix by variable div
+    """Divides a matrix by variable div.
+
+    Args:
+        matrix (matrix): The matrix to divide.
+        div (int): The number used to divide.
 
     Raises:
         TypeError: An error occurred accessing the variable type.
         ZeroDivisionError: An error occurred accessing the variable value.
 
     Returns:
-        new_matrix: The new divided matrix
+        new_matrix: The new divided matrix.
     """
 
     if type(matrix) is not list:

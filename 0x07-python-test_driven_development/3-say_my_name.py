@@ -14,7 +14,7 @@ def say_my_name(first_name, last_name=""):
     """Joins two strings and prints them.
 
     Args:
-        first_name (_type_): First name.
+        first_name (str): First name.
         last_name (str, optional): Last name, Defaults to "".
 
     Raises:

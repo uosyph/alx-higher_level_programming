@@ -14,6 +14,9 @@ Raises:
 def print_square(size):
     """prints square '#' by size variable.
 
+    Args:
+        size (int): Input size.
+
     Raises:
         TypeError: An error occurred accessing the variable type.
         ValueError: An error occurred accessing the variable value.
