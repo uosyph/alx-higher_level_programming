@@ -16,10 +16,6 @@ if N < 4:
 
 
 def printBoard(board):
-    """Print formated board
-    Args:
-        board (list): list of list of 0 or 1
-    """
     board_vect = []
     for i in range(N):
         for j in range(N):
@@ -30,11 +26,6 @@ def printBoard(board):
 
 
 def valid_pos(board, row=0, col=0):
-    """Check valid positions in col
-    Args:
-        row (int): row number of matrix
-        col (int): colum number of matrix
-    """
     for i in range(col):
         if board[row][i] == 1:
             return False
@@ -56,10 +47,6 @@ def valid_pos(board, row=0, col=0):
 
 
 def Solver(board, col=0):
-    """Vefify the options
-    Args:
-        col (int): colum number of matrix
-    """
     if col >= N:
         printBoard(board)
         return True
@@ -74,9 +61,6 @@ def Solver(board, col=0):
 
 
 def n_queen():
-    """Solves the N queens problem.
-    Return: None
-    """
     board = []
     for row in range(N):
         board.append([0] * N)
