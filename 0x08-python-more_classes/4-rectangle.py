@@ -13,6 +13,7 @@ class Rectangle:
         Area: The rectangle area.
         Perimeter: The rectangle perimeter.
         Draw a rectangle: rectangle with the character #.
+        Rectangle: The width and height.
 
     Raises:
         TypeError: An error occurred accessing the variable type.
