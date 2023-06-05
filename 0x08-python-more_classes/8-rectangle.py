@@ -14,6 +14,7 @@ class Rectangle:
         Perimeter: The rectangle perimeter.
         Draw a rectangle: rectangle with the character #.
         Rectangle: The width and height.
+        rect_1, rect_2: Biggest rectangle based on the area.
 
     Raises:
         TypeError: An error occurred accessing the variable type.
