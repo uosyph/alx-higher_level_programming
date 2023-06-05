@@ -16,6 +16,18 @@ from sys import argv
 
 
 def check_spot(board, r, c):
+    """Checks spots for the board.
+
+    Args:
+        board (list): A board to check.
+        r (int): Row.
+        c (int): Column.
+
+    Returns:
+        0: On success.
+        1: On failure.
+    """
+
     n = len(board) - 1
 
     if board[r][c]:
@@ -45,6 +57,15 @@ def check_spot(board, r, c):
 
 
 def init_board(n=4):
+    """Initializes the board.
+
+    Args:
+        n (int, optional): The number of queens. Defaults to 4.
+
+    Returns:
+        board: The initialized board.
+    """
+
     board = []
     for _ in range(n):
         board.append([0 for _ in range(n)])
@@ -52,6 +73,17 @@ def init_board(n=4):
 
 
 def solve(board, row):
+    """Solves a row in the board.
+
+    Args:
+        board (list): The board.
+        row (int): The row to solve.
+
+    Returns:
+        board: The solved board.
+        None: On failure.
+    """
+
     for col in range(len(board)):
         if check_spot(board, row, col):
             board[row][col] = 1
@@ -68,6 +100,15 @@ def solve(board, row):
 
 
 def appl_soln(board):
+    """Apply the solution.
+
+    Args:
+        board (list): The board to apply the solution.
+
+    Returns:
+        soln: The solution.
+    """
+
     soln = []
     n = len(board)
 
@@ -79,6 +120,12 @@ def appl_soln(board):
 
 
 def nqueens(n=4):
+    """Solves row by row in each column.
+
+    Args:
+        n (int, optional): The number of queens. Defaults to 4.
+    """
+
     for col in range(n):
         board = init_board(n)
         board[0][col] = 1
@@ -86,6 +133,9 @@ def nqueens(n=4):
 
 
 def main():
+    """Validates arguments and start solving.
+    """
+
     if len(argv) != 2:
         print("Usage: nqueens N")
         exit(1)
