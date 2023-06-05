@@ -15,88 +15,141 @@ Returns: Every possible solution to the problem.
 from sys import argv
 
 
-def printBoard(board):
-    """Prints formated board
-    Args:
-        board (list): list of list of 0 or 1
-    """
-    board_vect = []
-    for i in range(N):
-        for j in range(N):
-            if board[i][j] == 1:
-                board_vect.append([i, j])
-                break
-    print(board_vect)
+def check_spot(board, r, c):
+    """Checks spots for the board.
 
-
-def valid_pos(board, row=0, col=0):
-    """Check valid positions in col
     Args:
-        row (int): row number of matrix
-        col (int): colum number of matrix
+        board (list): A board to check.
+        r (int): Row.
+        c (int): Column.
+
+    Returns:
+        0: On success.
+        1: On failure.
     """
-    for i in range(col):
-        if board[row][i] == 1:
-            return False
-    i = row
-    j = col
-    while i >= 0 and j >= 0:
-        if board[i][j] == 1:
-            return False
+
+    n = len(board) - 1
+
+    if board[r][c]:
+        return 0
+
+    for row in range(r):
+        if board[row][c]:
+            return 0
+
+    i = r
+    j = c
+    while i > 0 and j > 0:
         i -= 1
         j -= 1
-    i = row
-    j = col
-    while j >= 0 and i < N:
-        if board[i][j] == 1:
-            return False
-        i += 1
-        j -= 1
-    return True
+        if board[i][j]:
+            return 0
+
+    i = r
+    j = c
+    while i > 0 and j < n:
+        i -= 1
+        j += 1
+        if board[i][j]:
+            return 0
+
+    return 1
 
 
-def Solver(board, col=0):
-    """Vefify the options
+def init_board(n=4):
+    """Initializes the board.
+
     Args:
-        col (int): colum number of matrix
+        n (int, optional): The number of queens. Defaults to 4.
+
+    Returns:
+        board: The initialized board.
     """
-    if col >= N:
-        printBoard(board)
-        return True
-    res = False
-    for i in range(N):
-        if valid_pos(board, i, col):
-            board[i][col] = 1
-            res = Solver(board, col + 1) or res
 
-            board[i][col] = 0
-    return res
-
-
-def n_queen():
-    """Solves the N queens problem.
-    Return: None
-    """
     board = []
-    for row in range(N):
-        board.append([0] * N)
-    if not Solver(board, 0):
-        print("Not Solution Found")
-        return
+    for _ in range(n):
+        board.append([0 for _ in range(n)])
+    return board
+
+
+def solve(board, row):
+    """Solves a row in the board.
+
+    Args:
+        board (list): The board.
+        row (int): The row to solve.
+
+    Returns:
+        board: The solved board.
+        None: On failure.
+    """
+
+    for col in range(len(board)):
+        if check_spot(board, row, col):
+            board[row][col] = 1
+
+            if row == len(board) - 1:
+                print(appl_soln(board))
+                board[row][col] = 0
+                continue
+            elif solve(board, row + 1):
+                return board
+            else:
+                board[row][col] = 0
     return
 
 
-if __name__ == "__main__":
+def appl_soln(board):
+    """Apply the solution.
+
+    Args:
+        board (list): The board to apply the solution.
+
+    Returns:
+        soln: The solution.
+    """
+
+    soln = []
+    n = len(board)
+
+    for r in range(n):
+        for c in range(n):
+            if board[r][c]:
+                soln.append([r, c])
+    return soln
+
+
+def nqueens(n=4):
+    """Solves row by row in each column.
+
+    Args:
+        n (int, optional): The number of queens. Defaults to 4.
+    """
+
+    for col in range(n):
+        board = init_board(n)
+        board[0][col] = 1
+        solve(board, 1)
+
+
+def main():
+    """Validates arguments and start solving.
+    """
+
     if len(argv) != 2:
         print("Usage: nqueens N")
         exit(1)
-    if not argv[1].isdigit():
+    try:
+        n = int(argv[1])
+    except ValueError:
         print("N must be a number")
         exit(1)
-    else:
-        N = int(argv[1])
-
-    if N < 4:
+    if n < 4:
         print("N must be at least 4")
         exit(1)
-    n_queen()
+
+    nqueens(n)
+
+
+if __name__ == "__main__":
+    main()
