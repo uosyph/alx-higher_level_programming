@@ -2,7 +2,7 @@
 
 /**
  * print_python_string - prints Python strings.
- * @p: a PyObject string object.
+ * @p: PyObject string object.
  * Return: void.
  */
 void print_python_string(PyObject *p)
@@ -30,6 +30,5 @@ void print_python_string(PyObject *p)
         printf("  type: compact unicode object\n");
     }
 
-    printf("  len: %ld\n", len);
-    printf("  value: %ls\n", PyUnicode_AsWideCharString(p, &len));
+    printf("  len: %ld\n  value: %ls\n", len, PyUnicode_AsWideCharString(p, &len));
 }
