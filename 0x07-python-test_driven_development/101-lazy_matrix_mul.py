@@ -1,14 +1,6 @@
 #!/usr/bin/python3
+"""Multiplying two matrices using the NumPy module.
 """
-Multiplying two matrices using the NumPy module.
-
-Functions:
-    lazy_matrix_mul(m_a, m_b)
-
-Raises:
-    Exception: An error occurred.
-"""
-
 import numpy as np
 
 

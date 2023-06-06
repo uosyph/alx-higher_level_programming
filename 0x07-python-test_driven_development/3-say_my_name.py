@@ -1,12 +1,5 @@
 #!/usr/bin/python3
-"""
-Prints names.
-
-Functions:
-    say_my_name(first_name, last_name="")
-
-Raises:
-    TypeError: An error occurred accessing the variable type.
+"""Prints the first and last name.
 """
 
 
@@ -15,7 +8,7 @@ def say_my_name(first_name, last_name=""):
 
     Args:
         first_name (str): First name.
-        last_name (str, optional): Last name, Defaults to "".
+        last_name (str, optional): Last name. Defaults to "".
 
     Raises:
         TypeError: An error occurred accessing the variable type.
@@ -23,7 +16,7 @@ def say_my_name(first_name, last_name=""):
 
     if not isinstance(first_name, str):
         raise TypeError("first_name must be a string")
-    if not isinstance(last_name, str):
+    elif not isinstance(last_name, str):
         raise TypeError("last_name must be a string")
     else:
-        print('My name is {:S} {:s}'.format(first_name, last_name))
+        print("My name is {} {}".format(first_name, last_name))

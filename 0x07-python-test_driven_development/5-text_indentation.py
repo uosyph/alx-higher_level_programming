@@ -1,12 +1,6 @@
 #!/usr/bin/python3
-"""
-Prints a text with 2 new lines after each of these characters: ".?:".
-
-Functions:
-    text_indentation(text)
-
-Raises:
-    TypeError: An error occurred accessing the variable type.
+"""Prints a text with 2 new lines after each of
+these characters: ".?:".
 """
 
 

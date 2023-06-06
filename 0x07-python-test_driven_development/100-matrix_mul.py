@@ -1,13 +1,5 @@
 #!/usr/bin/python3
-"""
-Multiplying two matrices.
-
-Functions:
-    matrix_mul(m_a, m_b)
-
-Raises:
-    TypeError: An error occurred accessing the variable type.
-    ValueError: An error occurred accessing the variable value.
+"""Multiplying two matrices.
 """
 
 

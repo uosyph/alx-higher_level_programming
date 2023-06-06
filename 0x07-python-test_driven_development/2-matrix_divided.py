@@ -1,13 +1,5 @@
 #!/usr/bin/python3
-"""
-Divides all elements of a matrix.
-
-Functions:
-    matrix_divided(matrix, div)
-
-Raises:
-    TypeError: An error occurred accessing the variable type.
-    ZeroDivisionError: An error occurred accessing the variable value.
+"""Divides all elements of a matrix.
 """
 
 

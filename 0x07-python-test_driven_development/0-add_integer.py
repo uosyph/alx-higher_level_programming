@@ -1,12 +1,5 @@
 #!/usr/bin/python3
-"""
-Adds two integers.
-
-Functions:
-    0-add_integer(a,b=98)
-
-Raises:
-    TypeError: An error occurred accessing the variable type.
+"""Adds two integers.
 """
 
 

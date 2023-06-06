@@ -1,13 +1,5 @@
 #!/usr/bin/python3
-"""
-Prints square by size input.
-
-Functions:
-    print_square(size)
-
-Raises:
-    TypeError: An error occurred accessing the variable type.
-    ValueError: An error occurred accessing the variable value.
+"""Prints square by size input.
 """
 
 
