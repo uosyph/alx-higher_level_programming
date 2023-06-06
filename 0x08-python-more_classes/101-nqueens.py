@@ -133,7 +133,7 @@ def nqueens(n=4):
 
 
 def main():
-    """Validates arguments and start solving.
+    """Validates arguments and starts solving.
     """
 
     if len(argv) != 2:
