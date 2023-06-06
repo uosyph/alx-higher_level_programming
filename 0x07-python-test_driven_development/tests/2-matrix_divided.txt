@@ -66,7 +66,7 @@ TypeError: div must be a number
 Traceback (most recent call last):
 TypeError: div must be a number
 
->>> matrix_divided([[6, 6, 6], [6, 6, 6], [6, 6, 6]], 'hellothere')
+>>> matrix_divided([[6, 6, 6], [6, 6, 6], [6, 6, 6]], 'string')
 Traceback (most recent call last):
 TypeError: div must be a number
 

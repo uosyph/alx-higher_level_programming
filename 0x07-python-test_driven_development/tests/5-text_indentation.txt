@@ -54,16 +54,16 @@ TypeError: text must be a string
 Output tests
 ==========================================
 
->>> text_indentation('Kevan.Victor.Madison')
-Kevan.
+>>> text_indentation('The.First.Test')
+The.
 <BLANKLINE>
-Victor.
+First.
 <BLANKLINE>
-Madison
+Test
 
->>> text_indentation(' .hello you? there ')
+>>> text_indentation(' .the second? test ')
 .
 <BLANKLINE>
-hello you?
+the second?
 <BLANKLINE>
-there
+test
