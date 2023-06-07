@@ -7,7 +7,7 @@
  */
 void print_python_string(PyObject *p)
 {
-    long int len;
+    long int length;
 
     fflush(stdout);
 
@@ -19,7 +19,7 @@ void print_python_string(PyObject *p)
         return;
     }
 
-    len = ((PyASCIIObject *)(p))->len;
+    length = ((PyASCIIObject *)(p))->length;
 
     if (PyUnicode_IS_COMPACT_ASCII(p))
     {
@@ -30,5 +30,5 @@ void print_python_string(PyObject *p)
         printf("  type: compact unicode object\n");
     }
 
-    printf("  len: %ld\n  value: %ls\n", len, PyUnicode_AsWideCharString(p, &len));
+    printf("  length: %ld\n  value: %ls\n", length, PyUnicode_AsWideCharString(p, &length));
 }
