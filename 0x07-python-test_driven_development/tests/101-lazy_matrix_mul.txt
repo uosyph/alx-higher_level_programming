@@ -20,12 +20,12 @@ array([[-12. ,  13.7],
 >>> lazy_matrix_mul(0, 0)
 Traceback (most recent call last):
 ...
-ValueError: matmul: Input operand 0 does not have enough dimensions (has 0, gufunc core with signature (n?,k),(k,m?)->(n?,m?) requires 1)
+ValueError: Scalar operands are not allowed, use '*' instead
 
 >>> lazy_matrix_mul([], 0)
 Traceback (most recent call last):
 ...
-ValueError: matmul: Input operand 1 does not have enough dimensions (has 0, gufunc core with signature (n?,k),(k,m?)->(n?,m?) requires 1)
+ValueError: Scalar operands are not allowed, use '*' instead
 
 >>> lazy_matrix_mul([], [])
 0.0
@@ -36,35 +36,35 @@ array([0.])
 >>> lazy_matrix_mul([[]], [[]])
 Traceback (most recent call last):
 ...
-ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 1 is different from 0)
+ValueError: shapes (1,0) and (1,0) not aligned: 0 (dim 1) != 1 (dim 0)
 
 >>> lazy_matrix_mul([[0]], [[]])
-array([], shape=(1, 0), dtype=float64)
+array([], shape=(1, 0), dtype=int64)
 
 >>> lazy_matrix_mul([['A']], [['A']])
 Traceback (most recent call last):
 ...
-numpy.core._exceptions._UFuncNoLoopError: ufunc 'matmul' did not contain a loop with signature matching types (dtype('<U1'), dtype('<U1')) -> None
+TypeError: invalid data type for einsum
 
 >>> lazy_matrix_mul([[0]], [['A']])
 Traceback (most recent call last):
 ...
-numpy.core._exceptions._UFuncNoLoopError: ufunc 'matmul' did not contain a loop with signature matching types (dtype('int64'), dtype('<U1')) -> None
+TypeError: invalid data type for einsum
 
 >>> lazy_matrix_mul([[0], [0, 0]], [[0, 0], [0]])
 Traceback (most recent call last):
 ...
-ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
+ValueError: setting an array element with a sequence.
 
 >>> lazy_matrix_mul([[0], [0]], [[0, 0], [0]])
 Traceback (most recent call last):
 ...
-ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
+ValueError: setting an array element with a sequence.
 
 >>> lazy_matrix_mul([[0], [0]], [[0], [0]])
 Traceback (most recent call last):
 ...
-ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 2 is different from 1)
+ValueError: shapes (2,1) and (2,1) not aligned: 1 (dim 1) != 2 (dim 0)
 
 >>> lazy_matrix_mul([[0]],)
 Traceback (most recent call last):
