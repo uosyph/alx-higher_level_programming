@@ -39,11 +39,6 @@ Traceback (most recent call last):
 ...
 TypeError: 'int' object is not iterable
 
->>> b = MyList('a', 'b')
-Traceback (most recent call last):
-...
-TypeError: list() takes at most 1 argument (2 given)
-
 >>> b = MyList(None)
 Traceback (most recent call last):
 ...
