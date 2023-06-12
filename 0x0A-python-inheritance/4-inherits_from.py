@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""Module contains a function that returns True if the object
-is an instance of a class that inherited (directly or indirectly)
-from the specified class; otherwise False."""
+"""Checks if object is inherits from a class."""
 
 
 def inherits_from(obj, a_class):
