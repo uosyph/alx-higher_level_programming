@@ -3,8 +3,7 @@
 
 
 class MyList(list):
-    """Public instance method that prints a list,
-    but sorted (ascending sort)."""
+    """Prints a sorted (ascending sort) list."""
 
     def print_sorted(self):
         """prints the list in ascending order"""
