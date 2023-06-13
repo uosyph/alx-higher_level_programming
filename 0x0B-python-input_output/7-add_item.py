@@ -9,10 +9,7 @@ loadfile = __import__('6-load_from_json_file').load_from_json_file
 
 args = sys.argv[1:]
 
-try:
-    args_list = loadfile("add_item.json")
-except Exception:
-    args_list = []
+args_list = loadfile("add_item.json")
 
 args_list += args
 savefile(args_list, "add_item.json")
