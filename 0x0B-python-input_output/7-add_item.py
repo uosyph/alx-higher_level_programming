@@ -2,17 +2,19 @@
 """Adds all arguments to a list, then save them to a file"""
 
 import sys
+import os
+
 savefile = __import__('5-save_to_json_file').save_to_json_file
 loadfile = __import__('6-load_from_json_file').load_from_json_file
 
 
-if __name__ == "__main__":
-    try:
-        lst = loadfile("add_item.json")
-    except:
-        lst = []
+filename = "add_item.json"
+args_list = []
 
-    for i in range(1, len(sys.argv)):
-        lst.append(sys.argv[i])
+if os.path.exists(filename):
+    args_list = loadfile(filename)
 
-    savefile(lst, "add_item.json")
+for argum in sys.argv[1:]:
+    args_list.append(argum)
+
+savefile(args_list, filename)
