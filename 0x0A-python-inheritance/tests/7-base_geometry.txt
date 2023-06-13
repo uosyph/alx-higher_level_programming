@@ -1,40 +1,65 @@
 >>> bg = __import__('7-base_geometry').BaseGeometry
 
->>> a = bg()
+>>> bg = bg()
 
->>> a.area()
+>>> bg.area()
 Traceback (most recent call last):
 ...
 Exception: area() is not implemented
 
->>> a.integer_validator("leo", 1)
+>>> bg.integer_validator("string", 1)
 
->>> a.integer_validator("leo", 0)
+>>> bg.integer_validator("string", 0)
 Traceback (most recent call last):
 ...
-ValueError: leo must be greater than 0
+ValueError: string must be greater than 0
 
->>> a.integer_validator("Leo", "a")
+>>> bg.integer_validator("String", "bg")
 Traceback (most recent call last):
 ...
-TypeError: Leo must be an integer
+TypeError: String must be an integer
 
->>> a.integer_validator("Leo", None)
+>>> bg.integer_validator("String", (4,))
 Traceback (most recent call last):
 ...
-TypeError: Leo must be an integer
+TypeError: String must be an integer
 
->>> a.integer_validator("Leo", [1])
+>>> bg.integer_validator("String", True)
 Traceback (most recent call last):
 ...
-TypeError: Leo must be an integer
+TypeError: String must be an integer
 
->>> a.integer_validator("Leo", 1.1)
+>>> bg.integer_validator("String", {3, 4})
 Traceback (most recent call last):
 ...
-TypeError: Leo must be an integer
+TypeError: String must be an integer
 
->>> a.integer_validator("leo", -10)
+>>> bg.integer_validator("String", None)
 Traceback (most recent call last):
 ...
-ValueError: leo must be greater than 0
+TypeError: String must be an integer
+
+>>> bg.integer_validator("String", [1])
+Traceback (most recent call last):
+...
+TypeError: String must be an integer
+
+>>> bg.integer_validator("String", 1.1)
+Traceback (most recent call last):
+...
+TypeError: String must be an integer
+
+>>> bg.integer_validator("string", -10)
+Traceback (most recent call last):
+...
+ValueError: string must be greater than 0
+
+>>> bg.integer_validator()
+Traceback (most recent call last):
+...
+TypeError: BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+>>> bg.integer_validator("String")
+Traceback (most recent call last):
+...
+TypeError: BaseGeometry.integer_validator() missing 1 required positional argument: 'value'
