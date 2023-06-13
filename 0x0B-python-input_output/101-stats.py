@@ -15,18 +15,18 @@ def print_stats(size, status_codes):
 size = 0
 status_codes = {}
 valid_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
-count = 0
+counter = 0
 
 try:
     # Read input line by line
     for line in stdin:
         # Update metrics
-        if count == 10:
+        if counter == 10:
             # Print metrics every 10 lines
             print_stats(size, status_codes)
-            count = 1
+            counter = 1
         else:
-            count += 1
+            counter += 1
 
         # Parse the line to extract file size
         line = line.split()
