@@ -4,40 +4,40 @@
 from sys import stdin
 
 
-def print_stats(file_size, status_codes):
+def print_stats(size, status_codes):
     """Prints final metrics"""
-    print("File file_size: {}".format(file_size))
+    print("File size: {}".format(size))
     for code in sorted(status_codes):
         print(f"{code}: {status_codes[code]}")
 
 
 # Initialize variables to keep track of metrics
-file_size = 0
+size = 0
 status_codes = {}
-valid_status_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
-counter = 0
+valid_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
+count = 0
 
 try:
     # Read input line by line
     for line in stdin:
         # Update metrics
-        if counter == 10:
+        if count == 10:
             # Print metrics every 10 lines
-            print_stats(file_size, status_codes)
-            counter = 1
+            print_stats(size, status_codes)
+            count = 1
         else:
-            counter += 1
+            count += 1
 
         # Parse the line to extract file size
         line = line.split()
         try:
-            file_size += int(line[-1])
+            size += int(line[-1])
         except (IndexError, ValueError):
             pass
 
         # Parse the line to extract status code
         try:
-            if line[-2] in valid_status_codes:
+            if line[-2] in valid_codes:
                 if status_codes.get(line[-2], -1) == -1:
                     status_codes[line[-2]] = 1
                 else:
@@ -46,9 +46,9 @@ try:
             pass
 
     # Print final metrics
-    print_stats(file_size, status_codes)
+    print_stats(size, status_codes)
 
 except KeyboardInterrupt:
     # Print final metrics on keyboard interrupt
-    print_stats(file_size, status_codes)
+    print_stats(size, status_codes)
     raise
