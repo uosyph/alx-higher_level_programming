@@ -11,10 +11,12 @@ if __name__ == "__main__":
                          passwd=argv[2],
                          db=argv[3])
     cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE BINARY name = %s ORDER BY id",
-                (argv[4],))
-    db.close()
-
+    cur.execute(
+        "SELECT * FROM states WHERE BINARY name = %s ORDER BY states.id ASC",
+        (argv[4],))
     rows = cur.fetchall()
     for row in rows:
         print(f"{row}")
+
+    cur.close()
+    db.close()
