@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Sends a GET request to a given URL, then displays value of X-Request-Id"""
+"""Sends a GET request to a given URL, then displays the value of X-Request-Id"""
 
 
 if __name__ == "__main__":
