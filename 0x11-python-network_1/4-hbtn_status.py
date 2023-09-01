@@ -6,4 +6,5 @@ if __name__ == "__main__":
 
     req = get('https://intranet.hbtn.io/status')
     print(
-        f"Body response:\n\t- type: {type(req.text)}\n\t- content: {req.text}")
+        f"Body response:\n\t- type: {type(req.text)}\n\t- content: {req.text}"
+        .expandtabs(4))
