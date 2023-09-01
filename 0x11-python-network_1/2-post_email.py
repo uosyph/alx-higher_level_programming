@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Sends a GET request to a given URL and an email, then displays the response"""
+"""Sends a POST request to a given URL and an email,
+then displays the response"""
 
 
 if __name__ == "__main__":
