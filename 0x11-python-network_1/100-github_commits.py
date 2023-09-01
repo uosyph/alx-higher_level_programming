@@ -10,7 +10,7 @@ if __name__ == "__main__":
     commits = res.json()
     try:
         for commit in range(10):
-            print(f'{commits[commit].get("sha")}: \
-                  {commits[commit].get("commit").get("author").get("name")}')
+            print(f'{commits[commit].get("sha")}:', end=" ")
+            print(f'{commits[commit].get("commit").get("author").get("name")}')
     except IndexError:
         pass
