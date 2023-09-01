@@ -2,7 +2,6 @@
 """Sends a POST request to a given URL and an email,
 then displays the response"""
 
-
 if __name__ == "__main__":
     from sys import argv
     from urllib.parse import urlencode

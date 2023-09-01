@@ -2,7 +2,6 @@
 """Sends a GET request to a given URL,
 then displays the value of X-Request-Id in the response header"""
 
-
 if __name__ == "__main__":
     from sys import argv
     from urllib.request import urlopen

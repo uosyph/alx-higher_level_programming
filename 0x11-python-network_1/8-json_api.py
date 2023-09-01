@@ -2,7 +2,6 @@
 """Sends a POST request to "http://0.0.0.0:5000/search_user"
 with a given letter as a parameter"""
 
-
 if __name__ == "__main__":
     from sys import argv
     from requests import post
