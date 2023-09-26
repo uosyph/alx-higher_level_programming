@@ -2,7 +2,8 @@
 
 const fs = require('fs');
 
-const files = process.argv.slice(2);
-fs.writeFile(files[0], files[1], function (err) {
+const file = process.argv.slice(2)[0];
+const msg = process.argv.slice(2)[1];
+fs.writeFile(file, msg, function (err) {
   if (err) console.log(err);
 });
