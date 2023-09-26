@@ -11,7 +11,7 @@ request(api, function (err, res, body) {
     data = JSON.parse(body);
     for (const id in data) {
       if (data[id].completed === true) {
-        if (!(data[id].userId in dict)) dict[data[id].userId] = 1; else dict[data[id].userId] += 1;
+        if (!(data[id].userId in dataDict)) dataDict[data[id].userId] = 1; else dataDict[data[id].userId] += 1;
       }
     }
     console.log(dataDict);
