@@ -10,7 +10,7 @@ request(api, function (err, res, body) {
   else {
     data = JSON.parse(body);
     for (const result in data.results) {
-      if (data.results[result].characters.filter(x => x.includes('18')).length > 0) { count++; }
+      if (data.results[result].characters.filter(x => x.includes('18')).length > 0) count++;
     }
     console.log(count);
   }

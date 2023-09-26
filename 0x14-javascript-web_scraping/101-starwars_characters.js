@@ -6,9 +6,9 @@ let data;
 let characters = [];
 const movieId = process.argv.slice(2)[0];
 
-function getCharacterName (url) {
+function getCharacterName (characterId) {
   return new Promise((resolve, reject) => {
-    request(url, (err, res, body) => {
+    request(characterId, (err, res, body) => {
       if (err) reject(err);
       else resolve(JSON.parse(body).name);
     });
@@ -16,7 +16,7 @@ function getCharacterName (url) {
 }
 
 function getCharacterId (movieId) {
-  request('https://swapi-api.alx-tools.com/api/films/' + movieId,
+  request(`https://swapi-api.alx-tools.com/api/films/${movieId}`,
     async function (err, res, body) {
       if (err) console.error(err);
       else {
