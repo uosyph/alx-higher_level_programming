@@ -1,4 +1,3 @@
-#!/usr/bin/node
 const $ = window.$;
 $(document).ready(function () {
   $.ajax({

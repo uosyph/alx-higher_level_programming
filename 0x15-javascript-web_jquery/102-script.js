@@ -1,4 +1,3 @@
-#!/usr/bin/node
 const $ = window.$;
 $(document).ready(function () {
   $('INPUT#btn_translate').click(function () {

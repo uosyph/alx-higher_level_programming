@@ -1,4 +1,3 @@
-#!/usr/bin/node
 const $ = window.$;
 function getHello () {
   $.ajax({
